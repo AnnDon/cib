@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>流程银行门户</title>
+<!-- Le styles -->
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="css/styles.css">
+<link rel="stylesheet" type="text/css" href="css/mCustomScrollbar.css">
+
+<!--[if lte IE 6]>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-ie6.css">
+<link rel="stylesheet" type="text/css" href="css/styles-ie6.css">
+<![endif]-->
+<!--[if lte IE 7]>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/ie.css">
+<![endif]-->
+
+<style type="text/css">
+
+
+</style>
+
+
+
+<body style="overflow-x: hidden;">
+<!--nav bar start-->
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+        <a class="brand" href="#"></a>
+	     <ul class="nav">
+	      <li class="active"><a class="index_load" href="#">工作台</a></li>
+	      <li><a href="#about" class="iframe_load">应用商城</a></li>
+	    </ul> 
+	    <form class="navbar-form pull-right">
+	      <div class="cib-navbar-login"><a href="#!" style="color: #fff;">登录</a></div>
+	      <div class="cib-navbar-logout"><a href="#!" style="color: #fff;">注销</a></div>
+	      <div class="cib-navbar-settings">
+	      	<div class="dropdown">
+			  <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			    设置
+			    <span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu" aria-labelledby="dLabel">
+			    <li><a href="#!">后台设置</a></li>
+			    <li><a href="#!">商城设置</a></li>
+			  </ul>
+			</div>
+	      </div>
+	      <div class="cib-navbar-msg"><a href="#!" style="color: #fff;">消息<sub></sub></a></div>
+	    </form>
+	</div>
+  </div>
+</div>
+<div style="clear: both;"></div>
+<!--nav bar end-->
+<!--navbar menu start-->
+<div class="cib-navbar-menu">
+  <div class="cib-navbar-menu-inner">
+    <div class="container">
+    	<ul class="cib-nav"  style="width: 130px;float: left;">
+    		<li class="cib-nav-active"><a class="active" id="main_index" href="#">首页</a></li>
+    		<li class="cib-nav-active"><a id="cib-sales_web" href="#" style="margin-left: 10px;">零售门户</a></li>
+    	</ul>
+    	<div  class="cib-nav-wrapper">
+	    <ul>
+	       <!-- <li class="cib-nav-item active">
+	       	<a href="#" class="cib-nav-item-name">这是标签页应用商城</a>
+	       	<a href="#!" class="cib-nav-item-close">
+	       		<img src="img/cib-nav-item-close.png" alt=""></a>
+	       	</li> -->
+	      
+	    </ul>
+	    </div>
+	    <div class="cib-nav-wrapper-btn" style="display: none;">
+	    	<div class="btn-group">
+			  <button class="cib-nav-left-btn"><i class="icon-chevron-left"></i></button>
+			  <button class="cib-nav-right-btn"><i class="icon-chevron-right"></i></button>
+			</div>
+	    </div>
+	</div>
+  </div>
+</div>
+<!--navbar menu end-->
+<!--标签页加载面板-->
+<div class="cib-nav_iframe_pane" style="height: 810px;">
+	<iframe src="./index_load.html" frameborder="0"  width="100%" scrolling="no" height="100%" style="height:800px;"></iframe>
+</div>
+
+<!--页脚开始-->
+<div class="cib-footer">
+  <div class="container">
+    <p class="muted credit">Copyright&copy;cib.com.cn  兴业银行</p>
+  </div>
+</div>
+<!--页脚结束-->
+
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script> 
+
+<script type="text/javascript" src="js/jquery.im.ui.min.js"></script> 
+<script type="text/javascript" src="js/jquery.mCustomScrollbar.js"></script> 
+<script type="text/javascript" src="js/cib.barTab.js"></script> 
+
+ <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+    <!--[if lte IE 6]>
+    <script type="text/javascript" src="js/bootstrap-ie.js"></script>
+    <![endif]-->
+    <script type="text/javascript">
+    (function ($) {
+      $(document).ready(function() {
+        if ($.isFunction($.bootstrapIE6)) $.bootstrapIE6($(document));
+		//绑定自定义滚动条
+		$(".cib-dblist-s-r-rows").mCustomScrollbar({
+			theme:"dark-thick"
+		 });
+		//绑定待办列表展开和关闭的事件
+		$(".cib-dblist-cat-btn").click(function(){
+			var isColla=$(this).hasClass("collapsed");
+			if (isColla) {
+				$(this).addClass("active");
+			}else{
+				$(this).removeClass("active");
+			}
+		});
+		//解决IE6下，面板收缩了任然占位的问题
+		
+		$('#cibHighSearchPane').on('hidden', function () {
+		    $("#cibHighSearchPane").css({display:"none"});
+		});
+		$('#cibHighSearchPane').on('show', function () {
+		    $("#cibHighSearchPane").css({display:"block"});
+		});
+
+    	$(".cib-dblist-cat-list").on('hidden', function () {
+	    	$(this).css({display:"none"});
+		});
+		$(".cib-dblist-cat-list").on('show', function () {
+		    $(this).css({display:"block"});
+		});
+
+		//测试barTab插件而随随便绑定的按钮事件，测试完需要删除
+		$.fn.bartab.defaults.defaultIndex="./index_load.html";
+		$(".navbar-inner a.index_load").click(function(e){
+			e.preventDefault();
+			var options={title:"这是标签页"+$(this).text(),url:"./index_load.html"};
+			$(".cib-navbar-menu").bartab(options).addTab(options);
+		});
+		$(".navbar-inner a.iframe_load").click(function(e){
+			e.preventDefault();
+			var options={title:"这是标签页"+$(this).text(),url:"./dblist_load.html"};
+			$(".cib-navbar-menu").bartab(options).addTab(options);
+		});
+		//首页标签单击事件
+		$("#main_index").click(function(e){
+		    e.preventDefault();
+		    $(this).addClass("active");
+		    $(".cib-nav-wrapper ul li.cib-nav-item").removeClass("active");
+		    $(".cib-nav_iframe_pane iframe").attr("src", $.fn.bartab.defaults.defaultIndex);
+		});
+
+		getBodyHeight();
+
+		var obj = {majy:"123"};
+		console.log(typeof obj == "object");
+				
+      });
+    })(jQuery);
+
+//计算主面板的高度
+function getBodyHeight(){
+	var ht=$(document).height();
+	$(".cib-nav_iframe_pane iframe").css({"height":(ht-40)+"px"});
+	
+}
+    </script>
+</body>
+
+</html>

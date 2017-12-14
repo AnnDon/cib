@@ -1,0 +1,535 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>待办事项列表</title>
+<!-- Le styles -->
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="css/styles.css">
+<link rel="stylesheet" type="text/css" href="css/msgbox.css">
+<link rel="stylesheet" type="text/css" href="css/mCustomScrollbar.css">
+
+<!--[if lte IE 6]>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-ie6.css">
+<link rel="stylesheet" type="text/css" href="css/styles-ie6.css">
+<![endif]-->
+<!--[if lte IE 7]>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/ie.css">
+<![endif]-->
+
+<style type="text/css">
+
+
+</style>
+
+
+
+<body>
+<!--nav bar start-->
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+        <a class="brand" href="#"></a>
+	    <!-- <ul class="nav">
+	      <li class="active"><a href="#">系统设置</a></li>
+	      <li><a href="#about">登录</a></li>
+	      <li><a href="#about">哈</a></li>
+	      <li><a href="#about">厉害啊</a></li>
+	      <li><a href="#about">应用中心</a></li>
+	      <li><a href="#about">常用饮用</a></li>
+	      <li><a href="#about">呵呵哈哈哈</a></li>
+	      <li><a href="#about">你好</a></li>
+	      <li><a href="#about">上海的</a></li>
+	    </ul> -->
+	   <form class="navbar-form pull-right">
+	      <div class="cib-navbar-login"><a href="#!" style="color: #fff;">登录</a></div>
+	      <div class="cib-navbar-logout"><a href="#!" style="color: #fff;">注销</a></div>
+	      <div class="cib-navbar-settings">
+	      	<div class="dropdown">
+			  <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			    设置
+			    <span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu" aria-labelledby="dLabel">
+			    <li><a href="#!">后台设置</a></li>
+			    <li><a href="#!">商城设置</a></li>
+			  </ul>
+			</div>
+	      </div>
+	      <div class="cib-navbar-msg"><a href="#!" style="color: #fff;">消息<sub></sub></a></div>
+	    </form>
+	</div>
+  </div>
+</div>
+<div style="clear: both;"></div>
+<!--nav bar end-->
+<!--navbar menu start-->
+<div class="cib-navbar-menu">
+  <div class="cib-navbar-menu-inner">
+    <div class="container">
+    	<ul class="cib-nav"  style="width: 40px;float: left;">
+    		<li class="cib-nav-active"><a href="#">首页</a></li>
+    	</ul>
+    	<div  class="cib-nav-wrapper">
+	    <ul>
+	      
+	      <li class="cib-nav-item active"><a href="#" class="cib-nav-item-name">这是标签页应用商城</a><a href="#!" class="cib-nav-item-close"><img src="img/cib-nav-item-close.png" alt=""></a></li>
+	      
+	    </ul>
+	    </div>
+	    <div class="cib-nav-wrapper-btn">
+	    	<a href="#!" class="cib-nav-left-btn"><i class="icon-chevron-left"></i></a>
+	    	<a href="#!" class="cib-nav-right-btn"><i class="icon-chevron-right"></i></a>
+	    </div>
+	</div>
+  </div>
+</div>
+<!--navbar menu end-->
+<div class="cib-dblist-content">
+	<div class="container">
+		<div class="cib-dblist-inner">
+		   <div class="cib-dblist-s-b row">
+		   	<div class="cib-dblist-s-bar">
+		   		<form action="">
+		   		<table style="width: 100%;">
+		   			<tr>
+		   				<td style="width: 630px;*width: 580px;">
+		   					<span class="cib-dblist-s-r-count">搜索结果&nbsp;36</span>
+		   				</td>
+		   				<td>
+		   					<div class="cib-h-dblist-h-s-k">
+				   			<div class="input-prepend input-append">
+				   			  <div class="add-on btn-group">
+							    <button class="btn dropdown-toggle" data-toggle="dropdown">
+							      全部
+							      <span class="caret"></span>
+							    </button>
+							    <ul class="dropdown-menu">
+							      <li><a href="#!">全部</a></li>
+							      <li><a href="#!">我的申请</a></li>
+							      <li><a href="#!">待办</a></li>
+							    </ul>
+							  </div>
+							  <input class="span2" id="prependedDropdownButton" type="text">
+							  <span class="add-on">&nbsp;&nbsp;</span>
+							</div>
+				   			</div>
+		   				</td>
+		   				<td>
+		   					<button id="cibHighSearchBtn" style="margin-top: 10px;" type="button" class="btn btn-primary" data-toggle="collapse" data-target="#cibHighSearchPane">
+							  高级搜索
+							</button>
+		   				</td>
+		   			</tr>
+		   		</table>
+		   		</form>		
+		   	</div>
+		   </div>
+		   <!--高级搜索面板开始-->
+		   <div style="clear: both;"></div>
+			<div id="cibHighSearchPane" class="cibHighSearchPane collapse" style="display: none;height: 0;">
+				<form>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td style="width: 45px;text-align: right;padding-right: 10px;"><label for="cibFW">范围</label></td>
+                        <td>
+                         <select name="" id="cibFW" class="cib-s-cat-c">
+                          <option value="1">全部</option>
+                          <option value="1">待办</option>
+                          <option value="1">已办</option>
+                          <option value="1">待阅</option>
+                          <option value="1">已阅</option>
+                          <option value="1">关注</option>
+                          <option value="1">我的申请</option>
+                         </select>
+                        </td>
+                        <td class="cib-input-line" width="20"></td>
+                        <td style="width: 45px;text-align: right;padding-right: 10px;"><label for="cibSH">事项</label></td>
+                        <td style="width: 152px;"><input type="text" style="width: 150px;" id="cibSH" placeholder="请输入事项"></td>
+                        <td class="cib-input-line" width="20"></td>
+                        <td style="width: 45px;text-align: right;padding-right: 10px;"><label for="cibState">状态</label></td>
+                        <td>
+                          <select name="" id="cibState" class="cib-s-cat-c">
+                          <option value="1">不限</option>
+                          <option value="1">完成</option>
+                          <option value="1">催办</option>
+                          <option value="1">提交</option>
+                         </select>
+                        </td>
+                        <td class="cib-input-line" width="20"></td>
+                        <td style="width: 45px;text-align: right;padding-right: 10px;"><label for="cibTime">时间</label></td>
+                        <td><input type="text" style="width:150px;" id="cibTime" placeholder="请输入时间"></td>
+                        <td class="cib-input-line" width="20"></td>
+                        <td>
+                          <button class="cib-search-btn" type="button">
+                            <img src="img/cib-query-b.png" alt="">
+                          查询
+                        </button>
+                        </td>
+                      </tr>
+                      <tr>
+                      	<td style="height: 20px;" colspan="13"></td>
+                      </tr>
+                      <tr>
+                        <td style="width: 45px;text-align: right;padding-right: 10px;"><label for="cibHJ">缓急</label></td>
+                        <td>
+                         <select name="" id="cibHJ" class="cib-s-cat-c">
+                          <option value="1">全部</option>
+                          <option value="1">待办</option>
+                          <option value="1">已办</option>
+                          <option value="1">待阅</option>
+                          <option value="1">已阅</option>
+                          <option value="1">关注</option>
+                          <option value="1">我的申请</option>
+                         </select>
+                        </td>
+                        <td class="cib-input-line" width="20"></td>
+                        <td style="width: 50px;text-align: right;padding-right: 10px;"><label for="cibJBR">交办人</label></td>
+                        <td style="width: 152px;"><input type="text" style="width: 150px;" id="cibJBR" placeholder="请输入事项"></td>
+                        <td class="cib-input-line" width="20"></td>
+                        <td style="width: 45px;text-align: right;padding-right: 10px;"><label for="cibTitle">标题</label></td>
+                        <td colspan="4"><input type="text" style="width: 355px;" id="cibTitle" placeholder="请输入标题"></td>
+                        <td class="cib-input-line" width="20"></td>
+                        <td>
+                          <button class="cib-reset" type="button">
+                            <img src="img/cib-reset-b.png" alt="">
+                          重置
+                        </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </form>
+			</div>
+		   <!--高级搜索面板结束-->
+		   <!--搜索结果页面开始-->
+			<div class="cib-dblist-s-r">
+                <!--搜索结果头部-->
+				<table width="100%" class="cib-dblist-s-r-h cib-datagrid">
+	              <thead>
+	                <tr class="cib-datagrid-item">
+	                  <th class="cib-th-h"></th>
+	                  <th class="cib-th-2">交办日期
+	                  <span class="cib-caret-container"><b class="caret-inverse cib-caret-top"></b><b class="caret cib-caret-bottom"></b></span></th>
+	                  <th class="cib-th-3">交办人</th>
+	                  <th class="cib-th-4">状态</th>
+	                  <th class="cib-th-5">标题</th>
+	                  <th class="cib-th-6">缓急</th>
+	                  <th class="cib-th-7"></th>
+	                </tr>
+	              </thead>
+	            </table>
+	            <div class="cib-dblist-s-r-rows" style="height: 650px;">
+	            	<div class="cib-datagrid-item">
+	            	   <div class="cib-dblist-cat">
+	            	   	<a href="#!" class="cib-dblist-cat-btn active" data-toggle="collapse" data-target="#cibDatagridItem-1">待办<b class="cib-db-cat-list-count">4</b></a></div>
+	            	   <div id="cibDatagridItem-1" class="cib-dblist-cat-list in collapse">
+	            	   	<table width="100%" class="cib-datagrid">
+		                    <tbody>
+		                      <tr class="cib-datagrid-item cib-jinji-bg cib-datagrid-trip-6">
+		                        <td class="cib-th-1"></td>
+		                        <td class="cib-th-2">2017-02-19</td>
+		                        <td class="cib-th-3">赵东来 012888</td>
+		                        <td class="cib-th-4">审核</td>
+		                        <td class="cib-th-5">后面是事项标题内容，内容可能很差昂后面是事项标题内容，内容可能很差昂</td>
+		                        <td class="cib-th-6">
+		                          <span class="cib-work-state-jinji">紧急</span>
+		                        </td>
+		                        <td class="cib-th-7">
+		                        	<span class="cib-finish" title="完成">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		                        	<a href="#!" class="cib-dblist-focus">&nbsp;&nbsp;&nbsp;&nbsp;</a>
+		                        </td>
+		                      </tr>
+		                      <tr class="cib-datagrid-item cib-import-bg  cib-datagrid-trip-3">
+		                        <td class="cib-th-1"></td>
+		                        <td class="cib-th-2">2017-02-19</td>
+		                        <td class="cib-th-3">赵东来 012888</td>
+		                        <td class="cib-th-4">审核</td>
+		                        <td class="cib-th-5">后面是事项标题内容，内容可能很差昂</td>
+		                        <td class="cib-th-6">
+		                          <span class="cib-work-state-import">重要</span>
+		                        </td>
+		                        <td class="cib-th-7">
+		                        	<span class="cib-finish" title="完成">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		                        	<a href="#!" class="cib-dblist-focus">&nbsp;&nbsp;&nbsp;&nbsp;
+		                        </td>
+		                      </tr>
+		                      <tr class="cib-datagrid-item cib-datagrid-trip-2">
+		                        <td class="cib-th-1"></td>
+		                        <td class="cib-th-2">2017-02-19</td>
+		                        <td class="cib-th-3">赵东来 012888</td>
+		                        <td class="cib-th-4">审核</td>
+		                        <td class="cib-th-5">后面是事项标题内容，内容可能很差昂</td>
+		                        <td class="cib-th-6">
+		                          <span class="cib-work-state-import">重要</span>
+		                        </td>
+		                        <td class="cib-th-7">
+		                        	<span class="cib-finish" title="完成">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		                        	<a href="#!" class="cib-dblist-focus">&nbsp;&nbsp;&nbsp;&nbsp;</a>
+		                        </td>
+		                      </tr>
+		                    </tbody>
+		                  </table>
+		                  <div class="cpagination">
+		                  	<ul>
+		                  		<li>每页</li>
+		                  		<li>
+		                  			<select name="pagination" id="">
+		                  				<option value="10">10</option>
+		                  				<option value="10">20</option>
+		                  				<option value="10">50</option>
+		                  			</select>
+		                  		</li>
+		                  		<li>条，共<span>230</span>条记录</li>
+		                  		<li style="width: 20px;"></li>
+		                  		<li class="cbtn"><a href="#!">首页</a></li>
+		                  		<li class="cbtn"><a href="#!">&lt;</a></li>
+		                  		<li class="cbtn">
+		                  			<input style="width: 40px;" type="" name="" value="2" />
+		                  		</li>
+		                  		<li class="totalPages"><span style="font-size: 20px;margin-left: 8px;">/</span><span>518</span></li>
+		                  		<li class="cbtn"><a href="#!">&gt;</a></li>
+		                  		<li class="cbtn"><a href="#!">尾页</a></li>
+		                  		<li class="cbtn goPage"><a href="#!">跳转</a></li>
+		                  	</ul>
+		                  </div>
+	            	   </div>
+	                </div>
+	                <div class="cib-datagrid-item">
+	            	   <div class="cib-dblist-cat">
+						<a href="#!" class="cib-dblist-cat-btn" data-toggle="collapse" data-target="#cibDatagridItem-2">待办<b class="cib-db-cat-list-count">15</b></a>
+	            	   </div>
+	            	   <div id="cibDatagridItem-2" class="cib-dblist-cat-list collapse">
+	            	   	<table width="100%" class="cib-datagrid">
+		                    <tbody>
+		                      <tr class="cib-datagrid-item cib-jinji-bg">
+		                        <td class="cib-th-1"></td>
+		                        <td class="cib-th-2">2017-02-19</td>
+		                        <td class="cib-th-3">赵东来 012888</td>
+		                        <td class="cib-th-4">审核</td>
+		                        <td class="cib-th-5">后面是事项标题内容，内容可能很差昂</td>
+		                        <td class="cib-th-6">
+		                          <span class="cib-work-state-jinji">紧急</span>
+		                          <span class="cib-finish" title="完成">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		                        </td>
+		                      </tr>
+		                      <tr class="cib-datagrid-item cib-import-bg">
+		                        <td class="cib-th-1"></td>
+		                        <td class="cib-th-2">2017-02-19</td>
+		                        <td class="cib-th-3">赵东来 012888</td>
+		                        <td class="cib-th-4">审核</td>
+		                        <td class="cib-th-5">后面是事项标题内容，内容可能很差昂</td>
+		                        <td class="cib-th-6">
+		                          <span class="cib-work-state-import">重要</span>
+		                        </td>
+		                      </tr>
+		                      <tr class="cib-datagrid-item cib-datagrid-trip">
+		                        <td class="cib-th-1"></td>
+		                        <td class="cib-th-2">2017-02-19</td>
+		                        <td class="cib-th-3">赵东来 012888</td>
+		                        <td class="cib-th-4">审核</td>
+		                        <td class="cib-th-5">后面是事项标题内容，内容可能很差昂</td>
+		                        <td class="cib-th-6"><a href="#" class="btn btn-link">完成</a></td>
+		                      </tr>
+		                    </tbody>
+		                  </table>
+	            	   </div>
+	                </div>
+	                <div class="cib-datagrid-item">
+	            	   <div class="cib-dblist-cat">
+	            	   	<a href="#!" class="cib-dblist-cat-btn active" data-toggle="collapse" data-target="#cibDatagridItem-3">已经阅读<b class="cib-db-cat-list-count">102</b></a></div>
+	            	   <div id="cibDatagridItem-3" class="cib-dblist-cat-list in collapse">
+	            	   	<table width="100%" class="cib-datagrid">
+		                    <tbody>
+		                      <tr class="cib-datagrid-item cib-jinji-bg">
+		                        <td class="cib-th-1"></td>
+		                        <td class="cib-th-2">2017-02-19</td>
+		                        <td class="cib-th-3">赵东来 012888</td>
+		                        <td class="cib-th-4">审核</td>
+		                        <td class="cib-th-5">后面是事项标题内容，内容可能很差昂后面是事项标题内容，内容可能很差昂</td>
+		                        <td class="cib-th-6">
+		                          <span class="cib-work-state-jinji">紧急</span>
+		                        </td>
+		                        <td class="cib-th-7">
+		                        	<span class="cib-finish" title="完成">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		                        	<a href="#!" class="cib-dblist-focus">&nbsp;&nbsp;&nbsp;&nbsp;</a>
+		                        </td>
+		                      </tr>
+		                      <tr class="cib-datagrid-item cib-import-bg">
+		                        <td class="cib-th-1"></td>
+		                        <td class="cib-th-2">2017-02-19</td>
+		                        <td class="cib-th-3">赵东来 012888</td>
+		                        <td class="cib-th-4">审核</td>
+		                        <td class="cib-th-5">后面是事项标题内容，内容可能很差昂</td>
+		                        <td class="cib-th-6">
+		                          <span class="cib-work-state-import">重要</span>
+		                        </td>
+		                        <td class="cib-th-7">
+		                        	<span class="cib-finish" title="完成">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		                        </td>
+		                      </tr>
+		                      <tr class="cib-datagrid-item cib-datagrid-trip">
+		                        <td class="cib-th-1"></td>
+		                        <td class="cib-th-2">2017-02-19</td>
+		                        <td class="cib-th-3">赵东来 012888</td>
+		                        <td class="cib-th-4">审核</td>
+		                        <td class="cib-th-5">后面是事项标题内容，内容可能很差昂</td>
+		                        <td class="cib-th-6">
+		                          <span class="cib-work-state-import">重要</span>
+		                        </td>
+		                        <td class="cib-th-7">
+		                        	<span class="cib-finish" title="完成">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		                        </td>
+		                      </tr>
+		                    </tbody>
+		                  </table>
+	            	   </div>
+	                </div>
+	                <div class="cib-datagrid-item">
+	            	   <div class="cib-dblist-cat">
+	            	   	<a href="#!" class="cib-dblist-cat-btn active" data-toggle="collapse" data-target="#cibDatagridItem-4">我的申请<b class="cib-db-cat-list-count">999+</b></a>
+	            	   </div>
+	            	   <div id="cibDatagridItem-4" class="cib-dblist-cat-list in collapse">
+	            	   	<table width="100%" class="cib-datagrid">
+		                    <tbody>
+		                      <tr class="cib-datagrid-item cib-jinji-bg">
+		                        <td class="cib-th-1"></td>
+		                        <td class="cib-th-2">2017-02-19</td>
+		                        <td class="cib-th-3">赵东来 012888</td>
+		                        <td class="cib-th-4">审核</td>
+		                        <td class="cib-th-5">后面是事项标题内容，内容可能很差昂后面是事项标题内容，内容可能很差昂</td>
+		                        <td class="cib-th-6">
+		                          <span class="cib-work-state-jinji">紧急</span>
+		                        </td>
+		                        <td class="cib-th-7">
+		                        	<span class="cib-finish" title="完成">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		                        	<a href="#!" class="cib-dblist-focus">&nbsp;&nbsp;&nbsp;&nbsp;</a>
+		                        </td>
+		                      </tr>
+		                      <tr class="cib-datagrid-item cib-import-bg">
+		                        <td class="cib-th-1"></td>
+		                        <td class="cib-th-2">2017-02-19</td>
+		                        <td class="cib-th-3">赵东来 012888</td>
+		                        <td class="cib-th-4">审核</td>
+		                        <td class="cib-th-5">后面是事项标题内容，内容可能很差昂</td>
+		                        <td class="cib-th-6">
+		                          <span class="cib-work-state-import">重要</span>
+		                        </td>
+		                        <td class="cib-th-7">
+		                        	<span class="cib-finish" title="完成">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		                        </td>
+		                      </tr>
+		                      <tr class="cib-datagrid-item cib-datagrid-trip">
+		                        <td class="cib-th-1"></td>
+		                        <td class="cib-th-2">2017-02-19</td>
+		                        <td class="cib-th-3">赵东来 012888</td>
+		                        <td class="cib-th-4">审核</td>
+		                        <td class="cib-th-5">后面是事项标题内容，内容可能很差昂</td>
+		                        <td class="cib-th-6">
+		                          <span class="cib-work-state-import">重要</span>
+		                        </td>
+		                        <td class="cib-th-7">
+		                        	<span class="cib-finish" title="完成">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		                        </td>
+		                      </tr>
+		                    </tbody>
+		                  </table>
+	            	   </div>
+	                </div>
+	            </div>
+		    </div>
+		    <!--搜索结果页面结束-->
+		</div>
+	</div>
+</div>
+
+
+
+<div class="cib-footer">
+  <div class="container">
+    <p class="muted credit">&copy; Copright 兴业银行</p>
+  </div>
+</div>
+
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script> 
+
+<script type="text/javascript" src="js/jquery.im.ui.min.js"></script> 
+<script type="text/javascript" src="js/jquery.mCustomScrollbar.js"></script> 
+<script type="text/javascript" src="js/cib.barTab.js"></script> 
+<script type="text/javascript" src="js/Cpagination.js"></script> 
+
+ <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+    <!--[if lte IE 6]>
+    <script type="text/javascript" src="js/bootstrap-ie.js"></script>
+    <![endif]-->
+    <script type="text/javascript">
+    (function ($) {
+      $(document).ready(function() {
+        if ($.isFunction($.bootstrapIE6)) $.bootstrapIE6($(document));
+		//绑定自定义滚动条
+		$(".cib-dblist-s-r-rows").mCustomScrollbar({
+			theme:"dark-thick"
+		 });
+		//绑定待办列表展开和关闭的事件
+		$(".cib-dblist-cat-btn").click(function(){
+			var isColla=$(this).hasClass("collapsed");
+			if (isColla) {
+				$(this).addClass("active");
+			}else{
+				$(this).removeClass("active");
+			}
+		});
+		//解决IE6下，面板收缩了任然占位的问题
+		
+		$('#cibHighSearchPane').on('hidden', function () {
+		    $("#cibHighSearchPane").css({display:"none"});
+		});
+		$('#cibHighSearchPane').on('show', function () {
+		    $("#cibHighSearchPane").css({display:"block"});
+		});
+
+    	$(".cib-dblist-cat-list").on('hidden', function () {
+	    	$(this).css({display:"none"});
+		});
+		$(".cib-dblist-cat-list").on('show', function () {
+		    $(this).css({display:"block"});
+		});
+
+		//测试barTab插件而随随便绑定的按钮事件，测试完需要删除
+		$(".navbar-inner a").click(function(){
+			var options={title:"这是标签页"+$(this).text(),url:"./tzgg.html",};
+			$(".cib-navbar-menu").bartab(options).addTab(options);
+		});
+
+
+		//测试分页插件
+		$("#cibDatagridItem-2").cpagination({
+			url:"http://172.16.22.1:8888/cib/index.html",
+			onAfterLoadData:onChangePageSize,
+			params:{_jusername:"majy"}
+		});
+		$("#cibDatagridItem-3").cpagination({
+			url:"http://172.16.22.1:8888/cib/login.html",
+			onAfterLoadData:onChangePageSize,
+			params:{_jusername:"majy"}
+		});
+
+		function onChangePageSize(data){
+			console.log("------onChangePageSize data------");
+			console.log(data);
+		}
+				
+      });
+    })(jQuery);
+
+    </script>
+
+
+</body>
+
+</html>

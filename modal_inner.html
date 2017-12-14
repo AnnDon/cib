@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>流程银行门户</title>
+    <!-- Le styles -->
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="css/mCustomScrollbar.css">
+
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-ie6.css">
+    <link rel="stylesheet" type="text/css" href="css/styles-ie6.css">
+    <![endif]-->
+    <!--[if lte IE 7]>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/ie.css">
+    <![endif]-->
+
+    <style type="text/css">
+        .modal-footer{
+            display: block;
+            width: 98%;
+            height: 30px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            padding: 5px 1%;
+        }
+
+    </style>
+
+
+
+<body style="overflow-x: hidden;height:100%;">
+
+<div class="child-main" style="width:970px;height:550px;padding: 10px;">
+
+<div>
+    <p>1</p><br>
+    <p>1</p><br><p>1</p><br>
+    <p>1</p><br><p>1</p><br><p>1</p><br><p>1</p><br><p>1</p><br><p>1</p><br><p>1</p><br>
+    <p>1</p><br><p>1</p><br><p>1</p><br><p>1</p><br><p>1</p><br>
+    <p>1</p><br><p>1</p><br><p>1</p><br><p>1</p><br><p>1</p><br>
+</div>
+
+</div>
+<div class="modal-footer">
+    <button class="btn cancel" data-dismiss="modal" aria-hidden="true">取消</button>
+    <button class="btn btn-primary ok">确定</button>
+</div>
+
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+
+<script type="text/javascript" src="js/jquery.im.ui.min.js"></script>
+<script type="text/javascript" src="js/jquery.mCustomScrollbar.js"></script>
+<script type="text/javascript" src="js/cib.barTab.js"></script>
+
+<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+
+<!--[if lte IE 6]>
+<script type="text/javascript" src="js/bootstrap-ie.js"></script>
+<![endif]-->
+<script type="text/javascript" src="js/CModal.js"></script>
+<script type="text/javascript">
+    (function ($) {
+        $(document).ready(function() {
+            if ($.isFunction($.bootstrapIE6)) $.bootstrapIE6($(document));
+            //获取父页面传递过来的数据
+            var data=parent.$("#cmodal-modal").data("data");
+            $(".cancel").on("click",function () {
+                parent.CModal.close();
+                setTimeout(function () {
+                    parent.location.reload();
+                },200);
+            });
+            $(".child-main").mCustomScrollbar({
+                theme:"dark-thick"
+            });
+
+        });
+    })(jQuery);
+
+
+</script>
+</body>
+
+</html>
